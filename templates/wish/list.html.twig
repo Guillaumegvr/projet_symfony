@@ -1,0 +1,18 @@
+{# templates/wish/list.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | Wish List{% endblock %}
+
+{% block main %}
+    <h2>Wish Liste :</h2>
+
+    <ul class="wishes">
+        {% if wishes is not empty %}
+            {% for wish in wishes %}
+                <li><a href="{{ path('app_wish_detail', { 'id': wish.id }) }}">{{ wish.title }} [ {{ wish.category.name | default('catégorie non spécifiée') }} ]</a></li>
+            {% endfor %}
+        {% else %}
+            <li>Aucun souhait trouvé</li>
+        {% endif %}
+    </ul>
+{% endblock %}

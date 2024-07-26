@@ -1,17 +1,58 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <link rel="stylesheet" href="{{ asset('css/layout.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>{% block title %}Bucket-List{% endblock %}</title>
+    <link rel="icon" href="{{ asset("image/favicon.png") }}" />
+</head>
+<body>
+<div class="entete">
+    <header>
+        <div class="titre">
+            <div class="one">
+            <img alt="logo site" src="{{ asset('image/logo.png') }}" >
+            <h1> Bucket-List</h1>
+            </div>
+            <div class="two">
+            {% if not is_granted('ROLE_USER') %}
+                <a href="{{ path('app_inscription') }}">Inscription</a>
+                <a href="{{ path('app_login') }}">Connexion</a>
+            {% endif %}
+            {% if is_granted('ROLE_USER') %}
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+            {% endif %}
+            </div>
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+        </div>
+    </header>
+    <nav>
+        <a href="{{ path('app_main_home') }}">Home</a>
+        <a href="{{ path('app_wish_list') }}">All Wishes</a>
+        {% if is_granted('ROLE_USER') %}
+        <a href="{{ path('app_wish_add') }}">Add yours !</a>
+        {% endif %}
+        <a href="{{ path('app_main_aboutUs') }}">About Us</a>
+    </nav>
+</div>
+<main>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash flash-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% block main %}{% endblock %}
+</main>
+
+<footer>
+    <p>&#xA9 Bucket-List {{ 'now' | date("Y") }}</p>
+</footer>
+</body>
 </html>

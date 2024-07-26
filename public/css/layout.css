@@ -1,0 +1,124 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background-color: #FEF0E4;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1DCD1;
+    height: 50px;
+}
+
+.titre{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 2%
+}
+.one{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 2rem;
+}
+.two{
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    background-color: cadetblue;
+    border: 0.2px solid #8f8f9d;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: default;
+    margin-top: 3%;
+}
+
+
+.entete{
+    background-color: #A5A58A;
+    padding: 0.5%;
+}
+
+.entete a {
+    text-decoration:none;
+    font-size: 1.2rem;
+    color: white;
+    margin: 2%;
+
+}
+
+main {
+    margin: 2%;
+}
+
+.wishes {
+    list-style-type:none;
+    padding-left: 20px;
+    margin: 3%;
+
+}
+
+.wishes li {
+    margin-bottom: 10px;
+}
+
+.wishes a {
+    text-decoration:none;
+    color: black;
+}
+
+.wishes a:hover {
+    color: #A5A58A;
+}
+
+h2{
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+label{
+    display: block;
+}
+
+input,
+textarea{
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    width: 300px;
+}
+
+.flash{
+    padding : 20px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.flash-success{
+    background-color: seagreen;
+}
+
+button{
+    margin-top: 1rem;
+}

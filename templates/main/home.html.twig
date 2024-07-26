@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} | Accueil{% endblock %}
+
+{% block main %}
+    <h2>Accueil</h2>
+    {% if is_granted('ROLE_USER') %}
+        <h3> Bonjour {{ userEmail}}</h3>
+    {% endif %}
+{% endblock %}

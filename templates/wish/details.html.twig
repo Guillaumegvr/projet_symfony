@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ parent() }} | Wish Détail{% endblock %}
+
+{% block main %}
+    <h2>Souhait {{ wish.id}} [ {{ wish.category.name | default('catégorie non spécifiée') }} ] </h2>
+    <p>créé par {{ wish.author }} le {{ wish.dateCreated | date('d-m-y') }}</p>
+    <br>
+    <p>{{ wish.description }}</p>
+
+{% endblock %}
+
